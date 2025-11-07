@@ -25,7 +25,7 @@ def generate_image(prompt):
     if not API_KEY:
         st.error("Missing Hugging Face API key in secrets!")
         return None
-    url = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+    url = "https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-xl-base-1.0"
     headers = {"Authorization": f"Bearer {API_KEY}"}
     response = requests.post(url, headers=headers, json={"inputs": prompt})
     if response.status_code != 200:
@@ -73,3 +73,4 @@ if st.button("Post to BlueSky"):
                 st.success(f"Posted {len(images_to_post)} image(s) successfully!")
             except Exception as e:
                 st.error(f"Failed to post: {e}")
+
