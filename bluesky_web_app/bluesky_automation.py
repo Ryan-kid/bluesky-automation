@@ -51,14 +51,14 @@ if st.button("Post to BlueSky"):
             for file in uploaded_files[:4]:
                 img = Image.open(file)
                 buf = io.BytesIO()
-                img.save(buf, format="PNG")
+                img.save(buf, format="JPEG")
                 images_to_post.append(buf.getvalue())
         elif image_prompt:
             st.info("Generating AI image...")
             img = generate_image(image_prompt)
             if img:
                 buf = io.BytesIO()
-                img.save(buf, format="PNG")
+                img.save(buf, format="JPEG")
                 images_to_post.append(buf.getvalue())
 
         if not images_to_post:
@@ -73,4 +73,5 @@ if st.button("Post to BlueSky"):
                 st.success(f"Posted {len(images_to_post)} image(s) successfully!")
             except Exception as e:
                 st.error(f"Failed to post: {e}")
+
 
